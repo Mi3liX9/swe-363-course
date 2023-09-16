@@ -1,0 +1,20 @@
+th {
+    text-transform: uppercase;
+}
+
+a {
+    color: green;
+}
+
+td {
+    background-color: cadetblue;
+}
+
+em {
+    background: blue;
+}
+
+#the_most_important {
+    text-transform: capitalize ;
+    background: darkgoldenrod;
+}
