@@ -6,8 +6,12 @@ a {
     color: green;
 }
 
-td {
+tr:not(:nth-child(1)) {
     background-color: cadetblue;
+}
+
+tr:hover {
+    background: darkblue;
 }
 
 em {
@@ -18,3 +22,43 @@ em {
     text-transform: capitalize ;
     background: darkgoldenrod;
 }
+
+h2 {
+    font-family: 'Rubik';
+}
+
+h2 {
+    text-transform: capitalize;
+}
+
+h2 + p::first-letter {
+    font-size: x-large;
+}
+
+nav li {
+    display: inline;
+    list-style: none;
+}
+
+nav li:not(:first-child) a {
+    text-decoration: none;
+}
+
+*::selection {
+    background: darkkhaki;
+}
+
+
+a {
+    cursor: pointer;
+}
+
+input {
+    height: 20px;
+    border: solid 2px blue;
+}
+
+input[name="message"] {
+    height: 50px;
+}
+
