@@ -1,64 +1,66 @@
+body {
+  font-family: "Rubik";
+}
+
 th {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 a {
-    color: green;
+  color: green;
 }
 
 tr:not(:nth-child(1)) {
-    background-color: cadetblue;
+  background-color: cadetblue;
 }
 
 tr:hover {
-    background: darkblue;
+  background: darkblue;
 }
 
 em {
-    background: blue;
+  background: blue;
 }
 
 #the_most_important {
-    text-transform: capitalize ;
-    background: darkgoldenrod;
+  text-transform: capitalize;
+  background: darkgoldenrod;
 }
 
 h2 {
-    font-family: 'Rubik';
+  font-family: "Rubik";
 }
 
 h2 {
-    text-transform: capitalize;
+  text-transform: capitalize;
 }
 
 h2 + p::first-letter {
-    font-size: x-large;
+  font-size: x-large;
 }
 
 nav li {
-    display: inline;
-    list-style: none;
+  display: inline;
+  list-style: none;
 }
 
 nav li:not(:first-child) a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 *::selection {
-    background: darkkhaki;
+  background: darkkhaki;
 }
 
-
 a {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 input {
-    height: 20px;
-    border: solid 2px blue;
+  height: 20px;
+  border: solid 2px blue;
 }
 
 input[name="message"] {
-    height: 50px;
+  height: 50px;
 }
-
