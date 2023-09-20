@@ -1,5 +1,11 @@
+:root {
+  --primary: #06b6d4;
+}
+
 body {
   font-family: "Rubik";
+  max-width: 750px;
+  margin: auto;
 }
 
 th {
@@ -14,12 +20,19 @@ tr:not(:nth-child(1)) {
   background-color: cadetblue;
 }
 
+td,
+th {
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+
 tr:hover {
   background: darkblue;
 }
 
 em {
   background: blue;
+  transition: background 1s;
 }
 
 #the_most_important {
@@ -39,15 +52,6 @@ h2 + p::first-letter {
   font-size: x-large;
 }
 
-nav li {
-  display: inline;
-  list-style: none;
-}
-
-nav li:not(:first-child) a {
-  text-decoration: none;
-}
-
 *::selection {
   background: darkkhaki;
 }
@@ -63,4 +67,87 @@ input {
 
 input[name="message"] {
   height: 50px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.header-logo {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-weight: bold;
+  > img {
+    border-radius: 100%;
+    aspect-ratio: 1;
+    width: 3rem;
+  }
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.5s ease-in-out;
+  gap: 2rem;
+  > ul,
+  img {
+    transition: all 0.5s ease-in-out;
+  }
+}
+
+nav img {
+  width: 2rem;
+  height: 2rem;
+  /* padding: 0 1rem; */
+  transition: all 0.1s;
+  opacity: 1;
+}
+
+nav:hover {
+  > ul {
+    /* display: flex; */
+    opacity: 1;
+  }
+
+  > img {
+    /* opacity: 0; */
+    transform: rotate(90deg);
+  }
+}
+
+nav ul {
+  /* display: none; */
+  display: flex;
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
+  justify-content: space-around;
+  list-style: none;
+  gap: 2rem;
+}
+
+nav a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+#posts {
+  list-style: none;
+  padding: 0;
+}
+
+#posts li {
+  padding: 1rem;
+  background-color: #171717;
+  margin: 0.5rem 0;
+  border-radius: 1rem;
+  user-select: none;
+  transition: background 0.3s ease-in-out;
+}
+
+#posts li:hover {
+  background: var(--primary);
 }
