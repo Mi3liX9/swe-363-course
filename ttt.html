@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .cell {
+      font-family: sans-serif;
+      font-size: larger;
+      font-weight: bolder;
+      background-color: beige;
+      width: 100px;
+      height: 100px;
+      border: 1px solid black;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cell:hover {
+      background-color: blanchedalmond;
+    }
+
+    .row {
+      display: flex;
+    }
+
+    .win {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="turn">
+    Now it's is <span>X</span> turn
+  </h1>
+  <!-- Board -->
+  <div class="board">
+    <div class="row">
+      <div id="1" class="cell"></div>
+      <div id="2" class="cell"></div>
+      <div id="3" class="cell"></div>
+    </div>
+    <div class="row">
+      <div id="4" class="cell"></div>
+      <div id="5" class="cell"></div>
+      <div id="6" class="cell"></div>
+    </div>
+    <div class="row">
+      <div id="7" class="cell"></div>
+      <div id="8" class="cell"></div>
+      <div id="9" class="cell"></div>
+    </div>
+    <h2 id="winner"></h2>
+    <button id="restart" onclick="restart()">restart</button>
+    <script>
+      let winPos = [
+        [1, 2, 3], [4, 5, 6],
+        [7, 8, 9], [1, 4, 7],
+        [2, 5, 8], [3, 6, 9],
+        [1, 5, 9], [3, 5, 7]
+      ];
+
+      // decided which turn is it
+      let turn = "X"
+      let gameEnded = false
+
+      // when we click on a cell add the letter 
+      let board = document.getElementsByClassName("board")[0]
+      board.addEventListener("click", cellClicked)
+
+      function cellClicked(event) {
+
+        let cell = event.target
+        if (cell.textContent !== "") return;
+        cell.innerText = turn
+        checkWin()
+        if (gameEnded) {
+          board.removeEventListener("click", cellClicked)
+          const winner = document.querySelector("#winner");
+          winner.innerText = "Winner is " + turn;
+        } else {
+          // change turn
+          turn = turn === "X" ? "O" : "X"
+
+          //change title
+          turnLetter = document.querySelector("#turn span")
+          turnLetter.innerText = turn
+        }
+      }
+
+      function checkWin() {
+        for (let i = 0; i < winPos.length; i++) {
+          if (
+            document.getElementById(winPos[i][0]).innerHTML === turn &&
+            document.getElementById(winPos[i][1]).innerHTML === turn &&
+            document.getElementById(winPos[i][2]).innerHTML === turn
+          ) {
+            document.getElementById(winPos[i][0]).classList.add("win");
+            document.getElementById(winPos[i][1]).classList.add("win");
+            document.getElementById(winPos[i][2]).classList.add("win");
+            gameEnded = true;
+          }
+        }
+      }
+
+      function restart() {
+        let cells = document.querySelectorAll(".cell")
+        cells.forEach(cell => { cell.innerText = ""; cell.classList.remove("win") })
+        winner.innerText = "";
+        gameEnded = false;
+
+        board.addEventListener("click", cellClicked);
+      }
+
+    </script>
+  </div>
+</body>
+
+</html>
