@@ -1,79 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="dark_theme.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-<nav>
-  <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/contact-us.html">Contact</a></li>
-    <li><a href="addtopic.html">Add Topic</a></li>
-  </ul>
-</nav>
 
-    <title>Add a Topic</title>
-  </head>
-  <body>
-    <h2>Add a Post Topic</h2>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="dark_theme.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/contact-us.html">Contact</a></li>
+      <li><a href="addtopic.html">Add Topic</a></li>
+    </ul>
+  </nav>
 
-    <form>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required /><br /><br />
+  <title>Add a Topic</title>
+</head>
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required /><br /><br />
+<body>
+  <h2>Add a Post Topic</h2>
 
-      <label>Have you written for any blogs before?</label><br />
-      <input type="radio" id="yes" name="written_before" value="yes" />
-      <label for="yes">Yes</label><br />
-      <input type="radio" id="no" name="written_before" value="no" />
-      <label for="no">No</label><br /><br />
+  <form>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required /><br /><br />
 
-      <label for="topic">Topic Title:</label>
-      <input list="topics" id="topic" name="topic" />
-      <datalist id="topics">
-        <option value="Tech Trends"></option>
-        <option value="Web Development"></option>
-        <option value="AI and Machine Learning"></option>
-        <option value="Mobile Dev"></option>
-        <option value="Freelancing Tips"></option></datalist
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required /><br /><br />
 
-      ><br /><br />
+    <label>Have you written for any blogs before?</label><br />
+    <input type="radio" id="yes" name="written_before" value="yes" />
+    <label for="yes">Yes</label><br />
+    <input type="radio" id="no" name="written_before" value="no" />
+    <label for="no">No</label><br /><br />
 
-      <label for="description">Brief Description of the Topic:</label><br />
-      <textarea
-        id="description"
-        name="description"
-        placeholder="Describe your topic in a few sentences..."
-        rows="4"
-        cols="50"
-        required
-      ></textarea
-      ><br /><br />
+    <label for="topic">Topic Title:</label>
+    <input list="topics" id="topic" name="topic" />
+    <datalist id="topics">
+      <option value="Tech Trends"></option>
+      <option value="Web Development"></option>
+      <option value="AI and Machine Learning"></option>
+      <option value="Mobile Dev"></option>
+      <option value="Freelancing Tips"></option>
+    </datalist><br /><br />
 
-      <input type="submit" value="Submit" />
-    </form>
+    <label for="description">Brief Description of the Topic:</label><br />
+    <textarea id="description" name="description" placeholder="Describe your topic in a few sentences..." rows="4"
+      cols="50" required></textarea><br /><br />
 
-    <footer>
-      <div">
-          <!-- Links to other pages -->
-          <a href="contact.html">Contact</a>
-          <a href="index.html">Blog</a>
-          <br><br>
-  
-          <!-- Contact Information -->
-          <p><a href="mailto:mi3lix9@outlook.sa">Email: mi3lix9@outlook.sa</a></p>
-          <p><a href="https://t.me/mi3lix9"></a>Telegram: @mi3lix9</p>
-          <br>
-  
-          <!-- Copyright Statement -->
-          <p>&copy; 2023 Ali AlShaikh. All rights reserved.</p>
+    <label for="signaturePad">Signature:</label><br />
+    <canvas id="signaturePad" width="500" height="200" style="border: 1px solid #000;"></canvas><br /><br />
+
+    <input type="submit" value="Submit" />
+  </form>
+
+  <footer>
+    <div">
+      <!-- Links to other pages -->
+      <a href="contact.html">Contact</a>
+      <a href="index.html">Blog</a>
+      <br><br>
+
+      <!-- Contact Information -->
+      <p><a href="mailto:mi3lix9@outlook.sa">Email: mi3lix9@outlook.sa</a></p>
+      <p><a href="https://t.me/mi3lix9"></a>Telegram: @mi3lix9</p>
+      <br>
+
+      <!-- Copyright Statement -->
+      <p>&copy; 2023 Ali AlShaikh. All rights reserved.</p>
       </div>
   </footer>
-  </body>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      let canvas = document.getElementById('signaturePad');
+      let ctx = canvas.getContext('2d');
+      let drawing = false;
+
+      canvas.addEventListener('mousedown', () => {
+        drawing = true;
+      });
+
+      canvas.addEventListener('mouseup', () => {
+        drawing = false;
+        ctx.beginPath();
+      });
+
+      canvas.addEventListener('mousemove', draw);
+
+      function draw(e) {
+        if (!drawing) return;
+        ctx.lineWidth = 5;
+        ctx.lineCap = "round";
+
+        ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+      }
+
+
+
+    });
+
+  </script>
+</body>
+
 </html>
