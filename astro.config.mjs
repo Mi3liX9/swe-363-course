@@ -6,6 +6,7 @@ import node from "@astrojs/node";
 export default defineConfig({
   output: "server",
   adapter: node({
-    mode: "standalone"
+    // mode: "standalone"
+    mode: "middleware" // This mode allow to use Express or any other framework.
   })
 });
