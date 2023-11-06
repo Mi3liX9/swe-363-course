@@ -1,7 +1,13 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-
+import { Post } from "../models/post.ts";
 // 201846840
+
+const posts = [
+  new Post("سامسونج تصدر البيتا العامة من One UI 6.0"),
+  new Post("كيف قمت ببناء السيرفر الخاص بي؟"),
+  new Post("أسترو: اطار عمل الويب المفضل عندي"),
+];
 ---
 
 <MainLayout>
@@ -17,7 +23,15 @@ import MainLayout from "../layouts/MainLayout.astro";
   </p>
 
   <h2>المنشورات</h2>
-  <ul id="posts"></ul>
+  <ul id="posts">
+    {
+      posts.map((post) => (
+        <li>
+          <a>{post.title}</a>
+        </li>
+      ))
+    }
+  </ul>
 
   <table>
     <tr>
@@ -47,22 +61,6 @@ import MainLayout from "../layouts/MainLayout.astro";
   </table>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const posts = [
-        { title: "سامسونج تصدر البيتا العامة من One UI 6.0" },
-        { title: "كيف قمت ببناء السيرفر الخاص بي؟" },
-        { title: "أسترو: اطار عمل الويب المفضل عندي" },
-      ];
-
-      const postsList = document.getElementById("posts");
-
-      posts.forEach((post) => {
-        const li = document.createElement("li");
-        li.textContent = post.title;
-        postsList.appendChild(li);
-      });
-    });
-
     document.addEventListener("keydown", (e) => {
       if (e.key === "h" || e.key === "ا") {
         alert("اضغط زر tab للتنقل مابين الازرار");
